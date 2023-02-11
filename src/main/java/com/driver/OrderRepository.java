@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 @Repository
 public class OrderRepository {
+
     private HashMap<String, Order> orderHashMap;
     private HashMap<String, DeliveryPartner> deliveryPartnerHashMap;
     private HashMap<String, String> orderPartnerHashMap;
@@ -57,7 +58,7 @@ public class OrderRepository {
         return new ArrayList<>(orderHashMap.keySet());
     }
 
-    public void deleteOrderById(String orderId) {
+    public void deleteOrder(String orderId) {
         if(orderPartnerHashMap.containsKey(orderId)){
             String partnerId = orderPartnerHashMap.get(orderId);
             HashSet<String> orders = partnerOrderHashMap.get(partnerId);
@@ -75,7 +76,7 @@ public class OrderRepository {
 
     }
 
-    public void deletePartnerById(String partnerId) {
+    public void deletePartner(String partnerId) {
         HashSet<String> orders = new HashSet<>();
         if(partnerOrderHashMap.containsKey(partnerId)){
             orders = partnerOrderHashMap.get(partnerId);
